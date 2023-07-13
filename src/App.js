@@ -1,9 +1,9 @@
-import './App.css';
+// import './App.css';
 import Dashboard from './components/Dashboard';
 import FetchGeo from './utils/functions/fetchGeo';
 
 function App() {
-  FetchGeo("Westminster");
+  // FetchGeo("Westminster");
 
   return (
     <div className="App">
