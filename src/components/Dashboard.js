@@ -5,10 +5,12 @@ function Dashboard() {
     return (
         <>
             <div className="flex">
-                <aside className="flex-none w-1/4 md:bg-slate-400 xl:bg-slate-700">
+                <aside className="flex">
                     {<Sidebar/>}
                 </aside>
-                <div className="flex-1 w-3/4 h-screen text-blue-800"> Hello 👋🏼</div>
+                <div className="flex-1 w-3/4 h-screen p-12 text-2xl text-black bg-slate-50"> 
+                    <h1> HOME PAGE 👋🏼 </h1>
+                </div>
             </div>
         </>
     );
