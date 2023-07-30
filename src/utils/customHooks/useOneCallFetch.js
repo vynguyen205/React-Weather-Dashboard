@@ -4,7 +4,7 @@ require('dotenv').config();
 const useOneCallFetch = (lat, lon) => {
     const API_KEY = process.env.REACT_APP_MY_API_KEY;
     const OneCallAPI = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=${API_KEY}`;
-    const [status, setStatus] = useState('idle');
+    // const [status, setStatus] = useState('idle');
     const [data, setData] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
@@ -13,17 +13,17 @@ const useOneCallFetch = (lat, lon) => {
               const data = await response.json();
               console.log('🎉 ONECALL API: ', data);
               setData(data);
-              setStatus('🎉 fetched!');
+              // setStatus('🎉 fetched!');
             } catch (e) {
-              setStatus('😢 error!')
-              console.log("Can't find it!")
+              // setStatus('😢 error!')
+              console.log(`Can't find: ${lat}, ${lon}`)
             }
         };
 
         fetchData();
     }, [OneCallAPI]);
 
-    return { status, data };
+    return { data };
 };
 
 export default useOneCallFetch;

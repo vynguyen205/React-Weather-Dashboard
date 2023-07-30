@@ -1,7 +1,10 @@
 import React from "react";
 import Sidebar from "./Sidebar";
+import useOneCallFetch from "../utils/customHooks/useOneCallFetch";
 
 function Dashboard() {
+    // useOneCallFetch(37.700638, -83.973813);
+
     return (
         <>
             <div className="flex">

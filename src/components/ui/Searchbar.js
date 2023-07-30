@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import useGeoFetch from "../../utils/customHooks/useGeoFetch";
 
-export default function Searchbar({ searchedResult }) {
-    const [city, setCity] = useState('');
-    const { data } = useGeoFetch(city);
-
+export default function Searchbar({ ...selectedCity }) {
+    const [searchCity, setSearhCity] = useState('');
+    const { data } = useGeoFetch(searchCity);
+ 
     const handleInputChange = (e) => {
         const { value } = e.target;
-        setCity(value);
+        setSearhCity(value);
     }
 
+    const handleClick = (city) => {
+        selectedCity(...city);
+        console.log("Selected: ", city);
+    }
 
     return (
         <>
@@ -18,7 +22,7 @@ export default function Searchbar({ searchedResult }) {
                     <div className="flex">
                         <input 
                             type="text"
-                            value={city}
+                            value={searchCity}
                             placeholder="Search city here ..."
                             onChange={handleInputChange}
                             className="p-3 pl-6 w-80 rounded-full bg-slate-100 text-lg"    
@@ -26,9 +30,11 @@ export default function Searchbar({ searchedResult }) {
                         {/* <button className="text-slate-500 pl-5"> Search </button> */}
                     </div>
                     <div className="pt-3 flex flex-col ">
-                        {data.length > 0 ? data.map(item => (
+                        {data.length > 0 ? data.map((city, index) => (
                             <button
-                                className="pt-2 pb-1 border-b-2 bg-transparent">{item.name}, {item.country}
+                                key={index}
+                                onClick={() => handleClick(city)}
+                                className="pt-2 pb-1 border-b-2 bg-transparent">{city.name}, {city.country}
                             </button>
                         )) : null}
                     </div>
